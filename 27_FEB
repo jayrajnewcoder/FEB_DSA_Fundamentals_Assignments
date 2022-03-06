@@ -1,0 +1,42 @@
+import java.util.*;
+public class practice
+{
+    static void intersection(int farr[],int sarr[])
+    {
+        int m=0;
+        int count[]=new int[farr.length];
+        for(int i=0;i<farr.length;i++)
+        {
+            for(int j=0;j<sarr.length;j++)
+            {
+                if (farr[i]==sarr[j])
+                {
+                    count[m]=farr[i];
+                    m++;
+                }
+            }
+        }
+        for(int i=0;i<m;i++)
+        {
+            System.out.print(count[i]+" ");
+        }
+    }
+    public static void main(String args[])
+    {
+        //Intersection of arrays 
+        Scanner sc = new Scanner(System.in);
+        int fsize=sc.nextInt();
+        int farr[]=new int[fsize];
+        for(int i=0;i<farr.length;i++)
+        {
+            farr[i]=sc.nextInt();
+        }
+        int ssize=sc.nextInt();
+        int sarr[]=new int[ssize];
+        for(int i=0;i<ssize;i++)
+        {
+            sarr[i]=sc.nextInt();
+        }
+        intersection(farr,sarr);
+    }
+}
