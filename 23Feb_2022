@@ -1,0 +1,99 @@
+import java.util.*;
+public class stacks
+{
+    static int firstoccurance(int arr[],int ele)
+    {
+        int low=0,high=arr.length-1,ans=0;
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if (arr[mid]>ele)
+            {
+                high=mid-1;
+            }else if (arr[mid]<ele)
+            {
+                low=mid+1;
+            }else{
+                ans=mid;
+                high=mid-1;
+            }
+        }
+        return ans;
+    }
+    static int lastoccurance(int arr[],int ele)
+    {
+        int low=0,high=arr.length-1,ans=0;
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if (arr[mid]>ele)
+            {
+                high=mid-1;
+            }else if (arr[mid]<ele)
+            {
+                low=mid+1;
+            }else{
+                ans=mid;
+                low=mid+1;
+            }
+        }
+        return ans;
+    }
+    static int solution(int arr[],int ele)
+    {
+        int low=0,high=arr.length-1;
+        for(int i=0;i<arr.length;i++)
+        {
+            if ((arr[i]>ele) && (arr[i-1]<ele))
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    static int findmissing(int arr[])
+    {
+        int sum=((n+1)(n+2))/2;
+        for(int i=0;i<arr.length;i++)
+        {
+            sum=sum-arr[i];
+        }
+        return sum;
+    }
+    public static void main(String args[])
+    {
+        //Count the occurance of element in the array in java
+        Scanner sc = new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        int ele=sc.nextInt();
+        int first=firstoccurance(arr,ele);
+        int last= lastoccurance(arr,ele);
+        int count=last-first+1;
+        System.out.println(count);
+        //Find the Index of the occurance of the element in the array
+        int asize=sc.nextInt();
+        int sarr[]=new int[asize];
+        for(int i=0;i<asize;i++)
+        {
+              sarr[i]=sc.nextInt();
+        }
+        int aele=sc.nextInt();
+        int index= solution(sarr,aele);
+        System.out.println(index);
+        //Find missing number in the array
+        int tsize=sc.nextInt();
+        int tarr[]=sc.nextInt();
+        for(int i=0;i<tsize;i++)
+        {
+            tarr[i]=sc.nextInt();
+        }
+        int finalans=findmissing(arr);
+        System.out.println(finalans);
+    
+    }
+}
